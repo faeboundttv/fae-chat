@@ -46,8 +46,9 @@
 <body>
   <div id="chat"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/tmi.js@1.8.5"></script>
-  <script>
+  <script type="module">
+    import tmi from 'https://cdn.skypack.dev/tmi.js';
+
     const client = new tmi.Client({
       channels: ['faebound']
     });
@@ -61,7 +62,6 @@
       div.innerHTML = `<strong>${tags['display-name']}:</strong> ${message}`;
       chat.appendChild(div);
 
-      // Limit to last 10 messages
       if (chat.children.length > 10) {
         chat.removeChild(chat.firstChild);
       }
